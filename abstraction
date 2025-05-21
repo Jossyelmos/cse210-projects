@@ -1,0 +1,63 @@
+What is Abstraction and why it is important?
+
+1.	Abstraction is a process or technique of breaking down complex ideas or system into the simplest form. of a huge or difficult ideas. This is a key aspect of Object-Oriented Programming that allows developers to present an application in a simple and intuitive way to users by hiding unnecessary details.
+
+2.	One important benefit of abstraction is its flexibility. It enables developers to maintain code more easily by allowing them to change or replace internal details without impacting other parts of the program.
+
+3.	A CSE210 week02 Journal project demonstrate abstraction by breaking down complex tasks into smaller. manageable components that interact seamlessly.
+
+using System.IO;
+
+public class Journal
+{
+    public List<Entry> _entries = new List<Entry>();
+
+    public void AddEntry(Entry newEntry)
+    {
+        _entries.Add(newEntry);
+    }
+    public void DisplayAll()
+    {
+        foreach (Entry entry in _entries)
+        {
+            entry.Display();
+            Console.WriteLine("-------------------------------------------");
+        }
+    }
+    public void SaveToFile(string filename)
+    {
+
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            // You can add text to the file with the WriteLine method
+            foreach (Entry entry in _entries)
+            {
+                outputFile.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
+            }
+        }
+        Console.WriteLine($"Entries saved to {filename} successfully.");
+
+    }
+    public void LoadFromFile(string filename)
+    {
+        string[] lines = File.ReadAllLines(filename);
+        _entries.Clear();
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split('|');
+            if (parts.Length == 3)
+            {
+                Entry entry = new Entry(parts[0], parts[1], parts[2]);
+                _entries.Add(entry);
+            }
+        }
+        Console.WriteLine("Entries loaded from file successfully.");
+    }
+}
+
+
+4.	The Journal class shields both the Entry class and PromptGeneraton class and doesn’t allow their details or the _entries list to be exposed directly.  It is responsible for the DisplayAll method, which calls the Display method from the Entry class manually. This ascertain that if the way entries were stored ever changes, the other parts of this program will remain the same and unaffected.
+
+Also, it is responsible for organising the storage and retrieval of entry information into files through the SaveToFile and LoadFromFile methods. It ensures information is not affected even when any part of this class is modified.
+
+Therefore, abstraction ensure easy maintenance, flexibility, simple interaction and improved program structure. This makes software more robust and adaptable.
