@@ -15,7 +15,7 @@ public class ListingActivity : Activity
     public void GetRandomPrompt()
     {
         Random rand = new Random();
-        Console.WriteLine($"{_prompts[rand.Next(_prompts.Count)]}");
+        Console.WriteLine($"\n -- {_prompts[rand.Next(_prompts.Count)]} --");
     }
 
     public void GetListFromUser()
@@ -24,7 +24,7 @@ public class ListingActivity : Activity
 
         while (DateTime.Now < end)
         {
-            Console.Write("Enter an item: ");
+            Console.Write("> ");
             Console.ReadLine();
             _counts++;
         }

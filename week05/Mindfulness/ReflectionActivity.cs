@@ -41,19 +41,20 @@ public class ReflectionActivity : Activity
 
     public void DisplayPrompt()
     {
-        Console.WriteLine($"{GetRandomPrompt()}");
+        Console.WriteLine("\nConsider the following prompt:");
+        Console.WriteLine($" --- {GetRandomPrompt()} --- ");
     }
 
     public void DisplayQuestions()
     {
-        Console.WriteLine($"> {GetRandomQuestion()}");
+        Console.Write($"\n{GetRandomQuestion()} ");
     }
 
     public void Run()
     {
         DisplayStatrtingMessage();
         DisplayPrompt();
-        ShowSpinner(1);
+        ShowSpinner(2);
 
         DateTime startTime = DateTime.Now;
         DateTime futureTime = startTime.AddSeconds(_duration);
@@ -63,7 +64,7 @@ public class ReflectionActivity : Activity
         while (DateTime.Now < futureTime)
         {
             DisplayQuestions();
-            ShowCountDown(5);
+            ShowSpinner(5);
         }
 
         DisplayEndingMessage();

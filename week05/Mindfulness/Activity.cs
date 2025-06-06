@@ -18,7 +18,7 @@ public class Activity
         _duration = int.Parse(Console.ReadLine());
         Console.Clear();
         Console.WriteLine("Get ready...");
-        ShowCountDown(5);
+        ShowSpinner(5);
     }
 
     public void DisplayEndingMessage()
@@ -57,10 +57,11 @@ public class Activity
     {
         for (int i = duration; i > 0; i--)
         {
-            Console.Write($"{i}...\r");
+            Console.Write($"{i}");
             Thread.Sleep(1000);
+            Console.Write("\b \b");
         }
 
-        Console.WriteLine("     ");
+        Console.WriteLine(" ");
     }
 }

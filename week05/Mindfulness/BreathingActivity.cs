@@ -12,9 +12,9 @@ public class BreathingActivity : Activity
 
         while (DateTime.Now < futureTime)
         {
-            Console.WriteLine($"\nBreath in...");
+            Console.Write("\nBreath in...");
             ShowCountDown(4);
-            Console.WriteLine("Breath out...");
+            Console.Write("Breath out...");
             ShowCountDown(4);
         }
 
