@@ -1,8 +1,11 @@
 public class SimpleGoal : Goal
 {
-    protected bool _isComplete = false;
+    protected bool _isComplete;
 
-    public SimpleGoal(string shortName, string description, int points) : base(shortName, description, points) { }
+    public SimpleGoal(string shortName, string description, int points) : base(shortName, description, points)
+    {
+        _isComplete = false;
+    }
 
     public override int RecordEvent()
     {
@@ -17,13 +20,6 @@ public class SimpleGoal : Goal
     public override bool IsComplete()
     {
         return _isComplete;
-    }
-
-    public override string GetDetailsString()
-    {
-        Console.WriteLine("The goals are: ");
-        string checkbox = _isComplete ? "[X]" : "[ ]";
-        return $"{checkbox} {_shortName} ({_description})";
     }
 
     public override string GetStringRepresentation()

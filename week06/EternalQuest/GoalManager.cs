@@ -2,7 +2,7 @@ public class GoalManager
 {
     private List<Goal> _goals = new List<Goal>();
     private int _score = 0;
-    
+
     public GoalManager() { }
 
     public void Start()
@@ -62,6 +62,8 @@ public class GoalManager
 
     public void ListGoalDetails()
     {
+        Console.WriteLine("The goals are: ");
+
         for (int i = 0; i < _goals.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}");
@@ -143,7 +145,7 @@ public class GoalManager
             }
             else if (type == "ChecklistGoal")
             {
-                if (parts.Length < 6) 
+                if (parts.Length < 6)
                 {
                     Console.WriteLine($"Error: Invalid checklist goal format in file (line {i + 1}).");
                     continue;

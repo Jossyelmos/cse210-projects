@@ -17,7 +17,8 @@ public abstract class Goal
 
     public virtual string GetDetailsString()
     {
-        return $"[ ] {_shortName} ({_description})";
+        string checkbox = IsComplete() ? "[X]" : "[ ]";
+        return $"{checkbox} {_shortName} ({_description})";
     }
 
     public abstract string GetStringRepresentation();
